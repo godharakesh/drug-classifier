@@ -24,6 +24,7 @@ update-branch:
 	git push --force origin HEAD:update
 
 hf-login:
+	git config pull.rebase true
 	git pull origin update
 	git switch update
 	pip install -U "huggingface_hub[cli]"
