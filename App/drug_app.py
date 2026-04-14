@@ -145,7 +145,14 @@ footer { display: none !important; }
 .divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 12px 0 24px; }
 """
 
-with gr.Blocks(title="Drug Classification") as demo:
+with gr.Blocks(
+    title="Drug Classification",
+    theme=gr.themes.Base(
+        primary_hue="purple",
+        font=[gr.themes.GoogleFont("Inter"), "sans-serif"],
+    ),
+    css=CSS,
+) as demo:
 
     # ── Header ──────────────────────────────────────────────────────────────
     gr.HTML("""
@@ -247,10 +254,4 @@ with gr.Blocks(title="Drug Classification") as demo:
     ex3.click(fn=lambda: (28, "M", "NORMAL", "HIGH", 30.5), outputs=[age, sex, blood_pressure, cholesterol, na_to_k])
 
 
-demo.launch(
-    theme=gr.themes.Base(
-        primary_hue="purple",
-        font=[gr.themes.GoogleFont("Inter"), "sans-serif"],
-    ),
-    css=CSS,
-)
+demo.launch()
